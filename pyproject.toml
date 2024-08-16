@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "traffic-example"
+version = "0.0.1"
+description = ""
+authors = ["alex.tarasiuk"]
+readme = "README.md"
+packages = [{include = "tra"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
