@@ -7,7 +7,7 @@ from ulid import ULID
 
 from tra.apps.forecast_rules.domain.entities import ForecastRule
 from tra.apps.forecast_rules.domain.repositories import AbstractForecastRuleRepository
-from tra.apps.forecast_rules.infra.rest.schemas import CreateForecastRuleSchema
+from tra.apps.forecast_rules.rest.schemas import CreateForecastRuleSchema
 from tra.apps.forecasting.services import AbstractForecastingService
 
 FORECAST_RULES_TAG = "forecast-rules"

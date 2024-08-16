@@ -1,6 +1,6 @@
 from dependency_injector import containers, providers
 
-from tra.apps.forecast_rules.infra.forecast_rule_memo_repo import ForecastRuleInMemoryRepository
+from tra.apps.forecast_rules.persistence.forecast_rule_memo_repo import ForecastRuleInMemoryRepository
 from tra.apps.forecasting.model_factory import ForecastModelFactory
 from tra.apps.forecasting.services import AbstractForecastingService, ForecastingService
 from tra.apps.forecasting.services.capping import ForecastCappingService
@@ -8,7 +8,7 @@ from tra.apps.forecasting.services.capping import ForecastCappingService
 
 class DIContainer(containers.DeclarativeContainer):
     wiring_config = containers.WiringConfiguration(
-        modules=["tra.apps.forecast_rules.infra.rest.endpoints"],
+        modules=["tra.apps.forecast_rules.rest.endpoints"],
     )
 
     forecast_rule_repository = providers.Singleton(ForecastRuleInMemoryRepository)

@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from tra.apps.forecast_rules.infra.rest import forecast_rules_router
+from tra.apps.forecast_rules.rest import forecast_rules_router
 from tra.infra.di_container import DIContainer
 
 
