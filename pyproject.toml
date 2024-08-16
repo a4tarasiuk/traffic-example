@@ -8,6 +8,9 @@ packages = [{ include = "tra" }]
 
 [tool.poetry.dependencies]
 python = "^3.12"
+dependency-injector = "4.42.0b1"
+fastapi = "^0.112.1"
+pydantic = "^2.8.2"
 
 
 [tool.poetry.group.local.dependencies]
@@ -16,11 +19,15 @@ pre-commit = "^3.8.0"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^8.3.2"
-pytest-django = "^4.8.0"
 faker = "^27.0.0"
 factory-boy = "^3.3.0"
 coverage = "^7.6.1"
 mypy = "^1.11.1"
+
+
+[tool.poetry.group.production.dependencies]
+gunicorn = "^23.0.0"
+uvicorn = "^0.30.6"
 
 [build-system]
 requires = ["poetry-core"]
@@ -28,17 +35,14 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.isort]
 profile = "black"
-src_paths = ["nga", "tests"]
+src_paths = ["tra", "tests"]
 skip = ["migrations"]
 multi_line_output = 3
 include_trailing_comma = true
-line_length=120
+line_length = 120
 
 [tool.black]
 line-length = 120
-extend-exclude = '''
-migrations
-'''
 
 [tool.pytest.ini_options]
 minversion = "8.0"
@@ -47,7 +51,6 @@ testpaths = [
     "tests",
 ]
 python_files = "tests.py test_*.py *_tests.py"
-#DJANGO_SETTINGS_MODULE = "tra.infra.settings"
 
 [tool.mypy]
 warn_unused_configs = true
@@ -63,22 +66,11 @@ disallow_any_generics = true
 disallow_untyped_calls = true
 disallow_incomplete_defs = true
 disallow_untyped_defs = true
-#
-exclude = [
-    "migrations/"
-]
-
-[[tool.mypy.overrides]]
-module = [
-    "django.*",
-    "rest_framework.*",
-]
-ignore_missing_imports = true
 
 [tool.autoflake]
 remove_all_unused_imports = true
 ignore_init_module_imports = true
 files = [
-    "nga/*.py",
+    "tra/*.py",
     "tests/*.py"
 ]
