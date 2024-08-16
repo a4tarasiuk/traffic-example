@@ -21,9 +21,19 @@ class ForecastRuleFactory(Factory):
         model = ForecastRule
 
 
+# forecast rules by direction
 class InForecastRuleFactory(ForecastRuleFactory):
     direction = DirectionEnum.IN
 
 
 class OutForecastRuleFactory(ForecastRuleFactory):
     direction = DirectionEnum.OUT
+
+
+# forecast rules by model
+class F1ForecastRuleFactory(ForecastRuleFactory):
+    forecast_model = ForecastModelEnum.F1
+
+
+class F2ForecastRuleFactory(ForecastRuleFactory):
+    forecast_model = ForecastModelEnum.F2
