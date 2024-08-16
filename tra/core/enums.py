@@ -1,6 +1,6 @@
-from enum import IntEnum
+from enum import StrEnum
 
 
-class DirectionEnum(IntEnum):
-    IN = 1
-    OUT = 2
+class DirectionEnum(StrEnum):
+    IN = "IN"
+    OUT = "OUT"
