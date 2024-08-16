@@ -7,6 +7,11 @@ from tra.apps.forecasting.services.calculation_abc import AbstractForecastingSer
 
 
 class ForecastingService(AbstractForecastingService):
+    """
+    Performs forecast rule calculation based on its parameters which include application of appropriate forecast model.
+    Applies capping rule to forecasting result.
+    """
+
     def __init__(
         self,
         forecast_model_factory: AbstractForecastModelFactory,
