@@ -2,8 +2,5 @@ from enum import IntEnum
 
 
 class ForecastModelEnum(IntEnum):
-    SIMPLE = 1
-
-
-class ForecastDistributionModelEnum(IntEnum):
-    SIMPLE = 1
+    F1 = 1
+    F2 = 2
