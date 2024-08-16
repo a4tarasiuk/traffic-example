@@ -1,6 +1,7 @@
 import pytest
 
 from tests.factories.forecast_rule import F1ForecastRuleFactory, F2ForecastRuleFactory, ForecastRuleFactory
+from tra.apps.forecast_rules.domain.enums import ForecastModelEnum
 from tra.apps.forecasting.model_factory import ForecastModelFactory
 from tra.apps.forecasting.models.f1 import F1ForecastModel
 from tra.apps.forecasting.models.f2 import F2ForecastModel
@@ -23,7 +24,7 @@ class TestModelFactory:
         assert isinstance(model, rule_model_cls)
 
     def test_when_model_is_not_supported(self):
-        rule = ForecastRuleFactory(forecast_model=-1)
+        rule = ForecastRuleFactory(forecast_model=ForecastModelEnum.F3)
 
         model_factory = self.model_factory_cls()
 

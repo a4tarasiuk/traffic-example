@@ -1,4 +1,6 @@
+import factory
 from factory import Factory, Faker
+from ulid import ULID
 
 from tra.apps.forecast_rules.domain.entities import ForecastRule
 from tra.apps.forecast_rules.domain.enums import ForecastModelEnum
@@ -6,7 +8,7 @@ from tra.core.enums import DirectionEnum
 
 
 class ForecastRuleFactory(Factory):
-    id = Faker("uuid4")
+    id = factory.LazyFunction(ULID)
 
     direction = Faker("random_element", elements=DirectionEnum)
 
