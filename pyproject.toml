@@ -4,11 +4,14 @@ version = "0.0.1"
 description = ""
 authors = ["alex.tarasiuk"]
 readme = "README.md"
-packages = [{include = "tra"}]
+packages = [{ include = "tra" }]
 
 [tool.poetry.dependencies]
 python = "^3.12"
 
+
+[tool.poetry.group.local.dependencies]
+pre-commit = "^3.8.0"
 
 [build-system]
 requires = ["poetry-core"]
