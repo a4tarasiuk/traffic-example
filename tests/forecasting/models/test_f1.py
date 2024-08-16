@@ -10,7 +10,7 @@ class TestF1ForecastModel:
     model_cls = F1ForecastModel
 
     @pytest.fixture
-    def _model(self) -> F1ForecastModel:
+    def _model(self):
         return self.model_cls()
 
     def test_calculate(self, _model):
