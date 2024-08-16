@@ -2,7 +2,7 @@
 .PHONY: changes checkout-master start-app start-celery-worker test mypy install-deps install-test-deps install-all-deps update-deps-lock-file coverage
 
 checkout-master:
-		git fetch && git checkout master && git pull
+		git fetch && git checkout master && git pull origin master
 
 changes: checkout-master
 		@echo Changes from `git describe --abbrev=0 --tags` tag:
