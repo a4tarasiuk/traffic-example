@@ -1,13 +1,14 @@
-from dataclasses import dataclass
 from decimal import Decimal
+
+from pydantic import BaseModel
+from ulid import ULID
 
 from tra.apps.forecast_rules.domain.enums import ForecastModelEnum
 from tra.core.enums import DirectionEnum
 
 
-@dataclass
-class ForecastRule:
-    id: str
+class ForecastRule(BaseModel):
+    id: ULID
 
     direction: DirectionEnum
 
