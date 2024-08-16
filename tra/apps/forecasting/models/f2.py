@@ -6,6 +6,8 @@ from tra.core.enums import DirectionEnum
 
 
 class F2ForecastModel(AbstractForecastModel):
+    """Directed forecast model. IN forecasted volume calculates by lower bound, and OUT by upper bound."""
+
     def calculate(self, forecast_rule: ForecastRule) -> Decimal:
         if forecast_rule.direction == DirectionEnum.IN:
             result_volume = forecast_rule.volume * forecast_rule.lower_bound
