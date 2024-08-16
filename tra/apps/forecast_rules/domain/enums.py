@@ -1,6 +1,6 @@
-from enum import IntEnum
+from enum import StrEnum
 
 
-class ForecastModelEnum(IntEnum):
-    F1 = 1
-    F2 = 2
+class ForecastModelEnum(StrEnum):
+    F1 = "F1"
+    F2 = "F2"
