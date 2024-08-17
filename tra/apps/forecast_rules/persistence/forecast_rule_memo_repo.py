@@ -8,7 +8,7 @@ from tra.apps.forecast_rules.domain.repositories import AbstractForecastRuleRepo
 
 class ForecastRuleInMemoryRepository(AbstractForecastRuleRepository):
     def __init__(self) -> None:
-        self._rules = []
+        self._rules: list[ForecastRule] = []
 
     def create(self, rule: ForecastRule) -> ForecastRule:
         self._rules.append(rule)
