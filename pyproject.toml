@@ -12,6 +12,7 @@ dependency-injector = "4.42.0b1"
 fastapi = "^0.112.1"
 pydantic = "^2.8.2"
 python-ulid = {extras = ["pydantic"], version = "^2.7.0"}
+pymongo = "^4.8.0"
 
 
 [tool.poetry.group.local.dependencies]
@@ -75,3 +76,6 @@ files = [
     "tra/*.py",
     "tests/*.py"
 ]
+
+[tool.mypy-pymongo]
+follow_imports = false
