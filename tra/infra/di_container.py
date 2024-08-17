@@ -1,24 +1,10 @@
-from typing import Generator
-
-from bson import RawBSONDocument
 from dependency_injector import containers, providers
-from pymongo import MongoClient
-from pymongo.database import Database
 
-from tra.apps.forecast_rules.persistence.forecast_rule_memo_repo import ForecastRuleInMemoryRepository
+from tra.apps.forecast_rules.persistence.forecast_rule_mongo_repo import ForecastRuleMongoRepository
 from tra.apps.forecasting.model_factory import ForecastModelFactory
 from tra.apps.forecasting.services import AbstractForecastingService, ForecastingService
 from tra.apps.forecasting.services.capping import ForecastCappingService
-
-
-def init_mongo_client() -> Generator[MongoClient[RawBSONDocument], None, None]:
-    client: MongoClient[RawBSONDocument]
-    with MongoClient() as client:  # TODO: Config
-        yield client
-
-
-def get_mongo_db(client: MongoClient[RawBSONDocument]) -> Database[RawBSONDocument]:
-    return client["traffic"]  # TODO: Config
+from tra.infra.persistence import get_mongo_db, init_mongo_client
 
 
 class DIContainer(containers.DeclarativeContainer):
@@ -30,7 +16,10 @@ class DIContainer(containers.DeclarativeContainer):
 
     mongo_db = providers.Callable(get_mongo_db, client=mongo_client)
 
-    forecast_rule_repository = providers.Singleton(ForecastRuleInMemoryRepository)
+    forecast_rule_repository = providers.Factory(
+        ForecastRuleMongoRepository,
+        mongo_db=mongo_db,
+    )
 
     forecasting_service = providers.Dependency(
         instance_of=AbstractForecastingService,  # type: ignore[type-abstract]

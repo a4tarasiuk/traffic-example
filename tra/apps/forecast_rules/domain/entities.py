@@ -1,6 +1,7 @@
 from decimal import Decimal
+from typing import Any
 
-from pydantic import BaseModel
+from pydantic import BaseModel, field_serializer
 from ulid import ULID
 
 from tra.apps.forecast_rules.domain.enums import ForecastModelEnum
@@ -29,3 +30,7 @@ class ForecastRule(BaseModel):
             lower_bound=self.lower_bound,
             upper_bound=self.upper_bound,
         )
+
+    @field_serializer('id')
+    def serialize_id(self, _id: ULID, _info: Any) -> str:
+        return str(_id)
